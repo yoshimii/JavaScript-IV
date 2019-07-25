@@ -8,16 +8,25 @@ Prototype Refactor
 
 */
 class GameObject {
-    constructor(attrs){
-        this.createdAt = attrs.createdAt;
-        this.name = attrs.name;
-        this.dimensions = attrs.dimensions;
+    constructor(attributes){
+        this.newCreatedAt = attributes.createdAt;
+        this.newName = attrs.name;
+        this.newDimensions = attrs.dimensions;
     }
 
     destroy(){
-        return `${this.name} was removed from the game.`
+        return `${this.newName} was removed from the game.`
       }
   };
 
 
+  class CharacterStats extends GameObject {
+      constructor(attributes) {
+        this.newHealthPoints = attributes.healthPoints
+        super(attributes);
+      }
+      takeDamage(){
+        return (`${this.newName} took damage.`);
+      }
+    }  
 
