@@ -1,6 +1,6 @@
 // CODE here for your Lambda Classes
 class Person {
-    constructor(atrributes){
+    constructor(attributes){
         this.name = attributes.name;
         this.age = attributes.age;
         this.location = attributes.location;
@@ -32,21 +32,21 @@ class Student extends Person {
         this.className = attributes.className;
         this.favSubjects = attributes.favSubjects;
     }
-    listsSubjects(favSubjects){
-        return favSubjects;
-    }
-    PRAssignments(subject){
-        return `${this.name} has submitted a pull request for ${this.subject}`
-    }
-    sprintChallenge(subject){
-        return `${this.name} has begun sprint challenge on ${this.subject}`
-    }
+    // listsSubjects(favSubjects){
+    //     return favSubjects;
+    // }
+    // pRAssignments(subject){
+    //     return `${this.name} has submitted a pull request for ${this.subject}`
+    // }
+    // sprintChallenge(subject){
+    //     return `${this.name} has begun sprint challenge on ${this.subject}`
+    // }
 }
 
 class ProjectManager extends Instructor {
     constructor(attributes){
         super(attributes);
-        this.gradClassName = attributes.gradeClassName;
+        this.gradClassName = attributes.gradClassName;
         this.favInstructor = attributes.favInstructor;
     }
     standUp(channel){
@@ -56,3 +56,25 @@ class ProjectManager extends Instructor {
         return `${this.student} debugs ${this.name}'s code on ${this.subject}.`
     }
 }
+
+const trelawney = new Person ({
+    name: "Professor Trelawney",
+    age: 56,
+    location: "Ireland",
+    specialty: "Divinations",
+    favLanguage: "prophecies",
+    catchPhrase: "There's more to me than incense and tea leaves."
+});
+
+const snape = new Instructor ({
+    name: "Severus Snape", 
+    age: 38, 
+    location: "behind the veil",
+    specialty: "Dark Arts",
+    favLanguage: "parseltongue",
+    catchPhrase: "*robe whip"
+})
+
+
+
+trelawney.speak("prophecies");
