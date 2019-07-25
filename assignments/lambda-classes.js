@@ -18,10 +18,10 @@ class Instructor extends Person {
         this.catchPhrase = attributes.catchPhrase;
     }// Instructor (child) Methods
     demo(subject){
-        return (`Today we are learning about ${this.subject}`);
+        return (`Today we are learning about ${subject}`);
     }
-    grade(student){
-        return (`${this.name} receives a perfect score on ${this.subject}`);
+    grade(subject){
+        return (`${this.name} receives a perfect score on ${subject}`);
     }
 }
 
@@ -32,15 +32,15 @@ class Student extends Person {
         this.className = attributes.className;
         this.favSubjects = attributes.favSubjects;
     }
-    // listsSubjects(favSubjects){
-    //     return favSubjects;
-    // }
-    // pRAssignments(subject){
-    //     return `${this.name} has submitted a pull request for ${this.subject}`
-    // }
-    // sprintChallenge(subject){
-    //     return `${this.name} has begun sprint challenge on ${this.subject}`
-    // }
+    listsSubjects(favSubjects){
+        return favSubjects;
+    }
+    pRAssignments(subject){
+        return `${this.name} has submitted a pull request for ${subject}`
+    }
+    sprintChallenge(subject){
+        return `${this.name} has begun sprint challenge on ${subject}`
+    }
 }
 
 class ProjectManager extends Instructor {
@@ -50,12 +50,21 @@ class ProjectManager extends Instructor {
         this.favInstructor = attributes.favInstructor;
     }
     standUp(channel){
-        return `${this.name} announces to ${this.channel} @channel standy times!`
+        return `${this.name} announces to ${channel} @channel standy times!`
     }
-    debugsCode(student, subject){
-        return `${this.student} debugs ${this.name}'s code on ${this.subject}.`
+    debugsCode(subject){
+        return `${this.student} debugs ${this.name}'s code on ${subject}.`
     }
 }
+
+const dumbledore = new ProjectManager ({
+    name: "Albus Dumbledore",
+    age: 150,
+    location: "behind the veil Snape",
+    specialty: "wisdom",
+    favLanguage: "English",
+    catchPhrase: "138"
+})
 
 const trelawney = new Person ({
     name: "Professor Trelawney",
@@ -70,11 +79,46 @@ const snape = new Instructor ({
     name: "Severus Snape", 
     age: 38, 
     location: "behind the veil",
-    specialty: "Dark Arts",
+    specialty: "Potions",
     favLanguage: "parseltongue",
     catchPhrase: "*robe whip"
 })
 
+const lupin = new Instructor ({
+    name: "Remus Lupin",
+    age: 59, 
+    location: "Lupin Lodge",
+    specialty: "Defense against the dark arts",
+    favLanguage: "English", 
+    catchPhrase: "It's the qualities of one's convictions that determine success. Not the number of followers."
+})
 
+const harry = new Student ({
+    name: "Harry Potter",
+    age: 39, 
+    location: "Ministry of Magic",
+    specialty: "Auror", 
+    favLanguage: "Parseltongue",
+    catchPhrase: ""
+})
+
+const ron = new Student({
+    name: "Ronald Weasley",
+    age: 39, 
+    location: "Weasley's Wizard Wheezes", 
+    specialty: "getting dirt on his nose",
+    favLanguage: "English", 
+    catchPhrase: "Bloody 'ell"
+})
+
+const hermione = new Student ({
+    name: "Hermione Granger",
+    age: 39,
+    location: "Ministry of Magic",
+    specialty: "Deputy Head of the Department of Magical Law Enforcement",
+    favLanguage: "Russian",
+    catchPhrase: "Let's see then."
+})
 
 trelawney.speak("prophecies");
+dumbledore.speak()
