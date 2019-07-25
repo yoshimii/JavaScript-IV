@@ -38,9 +38,21 @@ class Student extends Person {
     PRAssignments(subject){
         return `${this.name} has submitted a pull request for ${this.subject}`
     }
-    sprintChallenge(){
+    sprintChallenge(subject){
         return `${this.name} has begun sprint challenge on ${this.subject}`
     }
 }
 
-
+class ProjectManager extends Instructor {
+    constructor(attributes){
+        super(attributes);
+        this.gradClassName = attributes.gradeClassName;
+        this.favInstructor = attributes.favInstructor;
+    }
+    standUp(channel){
+        return `${this.name} announces to ${this.channel} @channel standy times!`
+    }
+    debugsCode(student, subject){
+        return `${this.student} debugs ${this.name}'s code on ${this.subject}.`
+    }
+}
