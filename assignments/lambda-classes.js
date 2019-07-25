@@ -32,8 +32,10 @@ class Student extends Person {
         this.className = attributes.className;
         this.favSubjects = attributes.favSubjects;
     }
-    listsSubjects(favSubjects){
-        return favSubjects;
+    listsSubjects(){
+        return this.favSubjects.forEach(function(element){
+            console.log(element);
+        });
     }
     pRAssignments(subject){
         return `${this.name} has submitted a pull request for ${subject}`
@@ -99,7 +101,10 @@ const harry = new Student ({
     location: "Ministry of Magic",
     specialty: "Auror", 
     favLanguage: "Parseltongue",
-    catchPhrase: ""
+    catchPhrase: "They're my letters!",
+    favSubjects: ["JavaScript", "CSS", "HTML"],
+    className: "augmented reality",
+    previousBackground: "wizard",
 })
 
 const ron = new Student({
@@ -108,7 +113,10 @@ const ron = new Student({
     location: "Weasley's Wizard Wheezes", 
     specialty: "getting dirt on his nose",
     favLanguage: "English", 
-    catchPhrase: "Bloody 'ell"
+    catchPhrase: "Bloody 'ell",
+    favSubjects: ["JavaScript", "CSS", "HTML"],
+    className: "iOS",
+    previousBackground: "wizard"
 })
 
 const hermione = new Student ({
@@ -117,8 +125,12 @@ const hermione = new Student ({
     location: "Ministry of Magic",
     specialty: "Deputy Head of the Department of Magical Law Enforcement",
     favLanguage: "Russian",
-    catchPhrase: "Let's see then."
+    catchPhrase: "Let's see then.",
+    favSubjects: ["JavaScript", "CSS", "HTML"],
+    className: "data science",
+    previousBackground: "witch"
 })
 
-trelawney.speak("prophecies");
-dumbledore.speak()
+// trelawney.speak("prophecies");
+// dumbledore.speak()
+harry.listsSubjects();
