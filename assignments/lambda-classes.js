@@ -38,5 +38,9 @@ class Student extends Person {
     PRAssignments(subject){
         return `${this.name} has submitted a pull request for ${this.subject}`
     }
+    sprintChallenge(){
+        return `${this.name} has begun sprint challenge on ${this.subject}`
+    }
 }
+
 
