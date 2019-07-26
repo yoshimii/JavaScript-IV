@@ -65,7 +65,9 @@ const dumbledore = new ProjectManager ({
     location: "behind the veil Snape",
     specialty: "wisdom",
     favLanguage: "English",
-    catchPhrase: "138"
+    catchPhrase: "138",
+    gradClassName: "FSW22",
+    favInstructor: "Britt"
 })
 
 const mrsNorris = new ProjectManager({
@@ -74,7 +76,9 @@ const mrsNorris = new ProjectManager({
     location: "???",
     specialty: "tipping off Filch",
     favLanguage: "cat?",
-    catchPhrase: "meow"
+    catchPhrase: "meow",
+    gradClassName: "FSW22",
+    favInstructor: "Britt"
 })
 // Instructor Attributes
 const trelawney = new Person ({
