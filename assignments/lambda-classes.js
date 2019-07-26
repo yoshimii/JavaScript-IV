@@ -18,10 +18,10 @@ class Instructor extends Person {
         this.catchPhrase = attributes.catchPhrase;
     }// Instructor (child) Methods
     demo(subject){
-        return (`Today we are learning about ${subject}`);
+        console.log(`Today we are learning about ${subject}`);
     }
-    grade(subject){
-        return (`${this.name} receives a perfect score on ${subject}`);
+    grade(student, subject){
+        console.log(`${student.name} receives a perfect score on ${subject}`);
     }
 }
 
@@ -38,10 +38,10 @@ class Student extends Person {
         });
     }
     pRAssignments(subject){
-        return `${this.name} has submitted a pull request for ${subject}`
+        console.log(`${this.name} has submitted a pull request for ${subject}`);
     }
     sprintChallenge(subject){
-        return `${this.name} has begun sprint challenge on ${subject}`
+        console.log(`${this.name} has begun sprint challenge on ${subject}`)
     }
 }
 
@@ -52,13 +52,13 @@ class ProjectManager extends Instructor {
         this.favInstructor = attributes.favInstructor;
     }
     standUp(channel){
-        return `${this.name} announces to ${channel} @channel standy times!`
+        console.log(`${this.name} announces to ${channel} @channel standy times!`);
     }
-    debugsCode(subject){
-        return `${this.student} debugs ${this.name}'s code on ${subject}.`
+    debugsCode(student, subject){
+        console.log(`${this.name} debugs ${student.name}'s code on ${subject}.`);
     }
 }
-
+// PM Attributes
 const dumbledore = new ProjectManager ({
     name: "Albus Dumbledore",
     age: 150,
@@ -68,6 +68,15 @@ const dumbledore = new ProjectManager ({
     catchPhrase: "138"
 })
 
+const mrsNorris = new ProjectManager({
+    name: "Mrs. Norris",
+    age: "???",
+    location: "???",
+    specialty: "tipping off Filch",
+    favLanguage: "cat?",
+    catchPhrase: "meow"
+})
+// Instructor Attributes
 const trelawney = new Person ({
     name: "Professor Trelawney",
     age: 56,
@@ -94,7 +103,7 @@ const lupin = new Instructor ({
     favLanguage: "English", 
     catchPhrase: "It's the qualities of one's convictions that determine success. Not the number of followers."
 })
-
+// Student Attributes
 const harry = new Student ({
     name: "Harry Potter",
     age: 39, 
@@ -131,6 +140,19 @@ const hermione = new Student ({
     previousBackground: "witch"
 })
 
-// trelawney.speak("prophecies");
-// dumbledore.speak()
+//test PM methods
+dumbledore.debugsCode(ron, "herbology");
+mrsNorris.standUp("#web22");
+
+//test instructor methods
+snape.grade(harry, "potions");
+lupin.demo("Defense Against the Dark Arts")
+
+
+//test student methods
 harry.listsSubjects();
+hermione.pRAssignments("divinations");
+ron.sprintChallenge('herbology');
+
+// Testing Grandchild inheritance from Parent
+ron.speak();
