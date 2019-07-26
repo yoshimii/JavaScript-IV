@@ -23,6 +23,19 @@ class Instructor extends Person {
     grade(student, subject){
         console.log(`${student.name} receives a perfect score on ${subject}`);
     }
+    gradeMod(student){
+        let min = 1;
+        let max = 10;
+        let posRand = 0;
+        let randNum = function(){
+            if(Math.random() < 0.5){
+                posRand = -1;//subtracts points
+            }else {
+                posRand = 1;//adds points
+            }
+        }
+        return (Math.floor(Math.random() * (max - min + 1) )*posRand) + student.grade;
+    }
 }
 
 class Student extends Person {
@@ -31,6 +44,7 @@ class Student extends Person {
         this.previousBackground = attributes.previousBackground;
         this.className = attributes.className;
         this.favSubjects = attributes.favSubjects;
+        this.grade =  Math.random()*100;
     }
     listsSubjects(){
         return this.favSubjects.forEach(function(element){
@@ -38,10 +52,16 @@ class Student extends Person {
         });
     }
     pRAssignments(subject){
-        console.log(`${this.name} has submitted a pull request for ${subject}`);
+        return (`${this.name} has submitted a pull request for ${subject}`);
     }
     sprintChallenge(subject){
-        console.log(`${this.name} has begun sprint challenge on ${subject}`)
+        return (`${this.name} has begun sprint challenge on ${subject}`)
+    }
+    graduate(){if(this.grade >= 70){
+        return "Let them graduate!"
+    }else {
+        return ("Retake your O.W.L.S.");
+    }
     }
 }
 
@@ -118,6 +138,7 @@ const harry = new Student ({
     favSubjects: ["JavaScript", "CSS", "HTML"],
     className: "augmented reality",
     previousBackground: "wizard",
+    grade: this.grade
 })
 
 const ron = new Student({
@@ -129,7 +150,8 @@ const ron = new Student({
     catchPhrase: "Bloody 'ell",
     favSubjects: ["JavaScript", "CSS", "HTML"],
     className: "iOS",
-    previousBackground: "wizard"
+    previousBackground: "wizard",
+    grade: this.grade
 })
 
 const hermione = new Student ({
@@ -141,7 +163,8 @@ const hermione = new Student ({
     catchPhrase: "Let's see then.",
     favSubjects: ["JavaScript", "CSS", "HTML"],
     className: "data science",
-    previousBackground: "witch"
+    previousBackground: "witch",
+    grade: this.grade
 })
 
 //test PM methods
@@ -155,8 +178,18 @@ lupin.demo("Defense Against the Dark Arts")
 
 //test student methods
 harry.listsSubjects();
-hermione.pRAssignments("divinations");
-ron.sprintChallenge('herbology');
+console.log(hermione.pRAssignments("divinations"));
+console.log(ron.sprintChallenge('herbology'));
 
 // Testing Grandchild inheritance from Parent
 ron.speak();
+
+// Grade modifier tester
+console.log(lupin.gradeMod(harry));// Instructor
+console.log(mrsNorris.gradeMod(hermione));
+
+//Graduate tester
+
+console.log(ron.grade);
+console.log(lupin.gradeMod(ron))
+console.log(ron.graduate());
